@@ -20,9 +20,9 @@ curl --retry 3 --silent --location $JVM_COMMON_BUILDPACK | tar xzm -C /tmp/jvm-c
 
 install_java_with_overlay ${BUILD_DIR}
 
-WILDFLY_VERSION="10.1.0.Final"
-WILDFLY_SHA1="9ee3c0255e2e6007d502223916cefad2a1a5e333"
-JBOSS_HOME=".jboss/wildfly-${WILDFLY_VERSION}"
+WILDFLY_VERSION="14.0.1.Final"
+WILDFLY_SHA1="757d89d86d01a9a3144f34243878393102d57384"
+JBOSS_HOME=".jboss/wildfly"
 
 cd $BUILD_DIR
 
@@ -42,6 +42,7 @@ echo "done"
 
 echo -n "-----> Deploying war file(s)... "
 cp target/*.war $JBOSS_HOME/standalone/deployments/
+cp standalone.xml $JBOSS_HOME/standalone/configuration/
 echo "done"
 
 echo "-----> Creating configuration..."
